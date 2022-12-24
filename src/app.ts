@@ -1,6 +1,6 @@
 import { createProtobufRpcClient, QueryClient } from "@cosmjs/stargate";
 import { Tendermint34Client } from "@cosmjs/tendermint-rpc";
-import { ServiceClientImpl } from "./../proto/out/cosmos/base/tendermint/v1beta1/query";
+import { ServiceClientImpl } from "./../proto/dest/cosmos/base/tendermint/v1beta1/query";
 
 const fetchFromOsmosis = async () => {
     const tendermintClient = await Tendermint34Client.connect("https://rpc.osmosis.zone:443");
