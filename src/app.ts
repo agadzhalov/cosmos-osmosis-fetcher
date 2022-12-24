@@ -10,11 +10,10 @@ const fetchFromOsmosis = async () => {
     const queryService = new ServiceClientImpl(rpcClient);    
     const queryResult = await queryService.GetLatestBlock({});
     const hash = queryResult.blockId?.hash;
-    if (hash) {
-        const b64 = Buffer.from(hash).toString('base64');
-        console.log(base64ToHex(b64));
-    }
-   
+
+    const b64 = Buffer.from(hash!).toString('base64');
+    console.log(base64ToHex(b64));
+
 }
 
 fetchFromOsmosis();
