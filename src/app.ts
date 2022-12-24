@@ -9,11 +9,13 @@ const fetchFromOsmosis = async () => {
     const rpcClient = createProtobufRpcClient(queryClient);
     const queryService = new ServiceClientImpl(rpcClient);    
     const queryResult = await queryService.GetLatestBlock({});
-    const hash = queryResult.blockId?.hash;
 
-    const b64 = Buffer.from(hash!).toString('base64');
-    console.log(base64ToHex(b64));
+    const latestBlockHeight = queryResult.block?.header?.height.toString();
 
+    const hashBytes64 = queryResult.blockId?.hash;
+    const latestBlockHash = Buffer.from(hashBytes64!).toString('hex').toUpperCase();;
+
+    console.log(latestBlockHash, latestBlockHeight)
 }
 
 fetchFromOsmosis();
