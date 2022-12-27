@@ -4,10 +4,14 @@ import LatestBlock from "./app/LatestBlock";
 import NumPools from "./app/NumPools";
 
 class App {
-    constructor() {}
+    private endpoint: string;
+
+    constructor(_endpoint: string) {
+        this.endpoint = _endpoint;
+    }
 
     public async run () {
-        const tendermintClient = await Tendermint34Client.connect("https://rpc.osmosis.zone:443");
+        const tendermintClient = await Tendermint34Client.connect(this.endpoint);
         const queryClient = new QueryClient(tendermintClient);
         const rpcClient = createProtobufRpcClient(queryClient);
     
