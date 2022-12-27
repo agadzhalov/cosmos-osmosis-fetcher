@@ -20,9 +20,9 @@ class App {
         const numPools = new NumPools(rpcClient);
         const stateTracker = new StateTracker(latestBlock, numPools);
 
-        console.log(await latestBlock.fetchBlockHeigth());
-        console.log(await latestBlock.fetchBlockHash());
-        console.log(await numPools.fetchNumPools());
+        console.log("Height", await latestBlock.fetchBlockHeigth());
+        console.log("Hash", await latestBlock.fetchBlockHash());
+        console.log("Num pools", await numPools.fetchNumPools());
         
         await stateTracker.runStateTracker()
     }
